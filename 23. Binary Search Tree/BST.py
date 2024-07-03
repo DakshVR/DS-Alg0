@@ -186,9 +186,9 @@ print(deleteBST(newBST))
 
 # ! Time and Space Complexity of BST
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # *                   #       Time          #         Space         #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Create BST          #        O(1)         #           O(1)        #
 # Insert Node BST     #      O(logN)        #         O(logN)       #
 # Traverse BST        #        O(N)         #           O(N)        #
