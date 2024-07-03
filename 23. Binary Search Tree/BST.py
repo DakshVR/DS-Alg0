@@ -117,3 +117,25 @@ def levelOrder(rootNode):                  #! ------------> TC = O(n), SC = O(n)
 print('\n')
 print("This is Level-Oder Traversal:" + '\n')
 levelOrder(newBST)
+
+
+def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
+    if rootNode is None or rootNode.data is None:
+        return "Node not found"
+    if rootNode.data == nodeValue:                     # ------------> TC = O(1)
+        return "Node Is Found"
+    elif nodeValue < rootNode.data:                    # ------------> TC = O(1)
+        if rootNode.leftChild is not None and rootNode.leftChild.data == nodeValue:                                     # ------------> TC = O(1)
+            return "Found on Left"
+        else:
+            return searchNode(rootNode.leftChild, nodeValue) # -----------> TC = O(n/2)
+    else:
+        if rootNode.rightChild is not None and rootNode.rightChild.data == nodeValue:                                     # ------------> TC = O(1)
+            return "Found on Right"
+        else:
+            return searchNode(rootNode.rightChild, nodeValue) # ----------> TC = O(n/2)
+
+
+print('\n')
+print("Searching for Node" + '\n')
+print(searchNode(newBST, 100))
