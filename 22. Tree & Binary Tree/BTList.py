@@ -43,7 +43,7 @@ class BinaryTree:
             print(self.customList[i])                  # ------------> TC = O(1)
 
     def deleteNode(self, value):           #! ------------> TC = O(n), SC = O(1)
-        if self.lastUsedIndex ==0:                     # ------------> TC = O(1)
+        if self.lastUsedIndex == 0:                    # ------------> TC = O(1)
             return "Nothing to Delete"
         for i in range(1, self.lastUsedIndex+1):       # ------------> TC = O(n)
             if self.customList[i] == value:
