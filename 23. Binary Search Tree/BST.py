@@ -46,7 +46,6 @@ insertNode(newBST, 100)
 insertNode(newBST, 20)
 insertNode(newBST, 40)
 
-
 # * Traversal
 
 # * Depth First Search
@@ -133,9 +132,43 @@ def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
         if rootNode.rightChild is not None and rootNode.rightChild.data == nodeValue:                                     # ------------> TC = O(1)
             return "Found on Right"
         else:
-            return searchNode(rootNode.rightChild, nodeValue) # ----------> TC = O(n/2)
-
+            return searchNode(rootNode.rightChild, nodeValue)# ----------> TC = O(n/2)
 
 print('\n')
 print("Searching for Node" + '\n')
 print(searchNode(newBST, 100))
+
+
+# To find Successor
+def mimvalue(bstNode):
+    currentNode = bstNode
+    while (currentNode.leftChild is not None):
+        currentNode = currentNode.leftChild
+    return currentNode
+
+def deleteNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
+    if rootNode is None:            
+        return rootNode                                # ------------> TC = O(1)
+    if nodeValue < rootNode.data:
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)# ------------> TC = O(n/2)
+    elif nodeValue > rootNode.data:
+        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)# ------------> TC = O(n/2)
+    else:
+        if rootNode.leftChild is None:
+            temp = rootNode.rightChild      # ------------> TC = O(1)
+            rootNode = None
+            return temp
+        elif rootNode.rightChild is None:
+            temp = rootNode.leftChild       # ------------> TC = O(1)
+            rootNode = None
+            return temp
+
+        temp = mimvalue(rootNode.rightChild)  # ------------> TC = O(logN)
+        rootNode.data = temp.data             # ------------> TC = O(1)
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data) # ------------> TC = O(n/2)
+    return rootNode
+
+print('\n')
+print("Deletion for Node")
+deleteNode(newBST, 20)
+levelOrder(newBST)
