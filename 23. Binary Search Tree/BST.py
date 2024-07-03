@@ -182,3 +182,17 @@ def deleteBST(rootNode):                   #! ------------> TC = O(1), SC = O(1)
 print('\n')
 print("Deletion for tree")
 print(deleteBST(newBST))
+
+
+# ! Time and Space Complexity of BST
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# *                   #       Time          #         Space         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Create BST          #        O(1)         #           O(1)        #
+# Insert Node BST     #      O(logN)        #         O(logN)       #
+# Traverse BST        #        O(N)         #           O(N)        #
+# Search node in BST  #      O(logN)        #         O(logN)       #
+# Delete node in BST  #      O(logN)        #         O(logN)       #
+# Delete BST          #        O(1)         #           O(1)        #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
