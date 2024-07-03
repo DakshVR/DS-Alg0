@@ -172,3 +172,13 @@ print('\n')
 print("Deletion for Node")
 deleteNode(newBST, 20)
 levelOrder(newBST)
+
+def deleteBST(rootNode):                   #! ------------> TC = O(1), SC = O(1)
+    rootNode.data = None                               # ------------> TC = O(1)
+    rootNode.leftChild = None                          # ------------> TC = O(1)
+    rootNode.rightChild = None                         # ------------> TC = O(1)
+    return "The BST is Deleted"
+
+print('\n')
+print("Deletion for tree")
+print(deleteBST(newBST))
