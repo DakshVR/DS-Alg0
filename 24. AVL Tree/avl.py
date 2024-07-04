@@ -80,12 +80,12 @@ def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
         if rootNode.leftChild is not None and rootNode.leftChild.data == nodeValue:
             return "Value found on Left"
         else:
-            return searchNode(rootNode.leftChild, rootNode)
+            return searchNode(rootNode.leftChild, nodeValue)
     else:
         if rootNode.rightChild is not None and rootNode.rightChild.data == nodeValue:
             return "Value found on Right"
         else:
-            return searchNode(rootNode.rightChild, rootNode)
+            return searchNode(rootNode.rightChild, nodeValue)
         
 #! 2 cases
 #* Rotation is not required : Here it is same as BST
@@ -94,6 +94,7 @@ def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
 #* Rotation is required
         #* 4 conditions
         #? ----> Left Left (LL)   = Right Rotation from disbalanced node to grandchild
+        #  Balance > 1, left is greater then right
         # Algorithm for LL
         # rotateright(DisbalancedNode):    #! ------------> TC = O(1), SC = O(1)
         #       newroot = Disbalanced.leftchild
@@ -146,9 +147,67 @@ def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
         #       update height of disbalamced and newroot
         #       return newroot
         
+def getHeight(rootNode):                   #! ------------> TC = O(1), SC = O(1)
+    if not rootNode:
+        return 0
+    return rootNode.height
 
-def insertion(rootNode,nodeValue):
-    pass
+def rightRotation(DisbalancedNode):        #! ------------> TC = O(1), SC = O(1)
+    newRoot = DisbalancedNode.leftChild
+    DisbalancedNode.leftChild = DisbalancedNode.leftChild.rightChild
+    newRoot.rightChild = DisbalancedNode
+    DisbalancedNode.height = 1 + max(getHeight(DisbalancedNode.leftChild), getHeight(DisbalancedNode.rightChild))
+    newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
+    return newRoot
+
+def leftRotation(DisbalancedNode):        #! ------------> TC = O(1), SC = O(1)
+    newRoot = DisbalancedNode.rightChild
+    DisbalancedNode.rightChild = DisbalancedNode.rightChild.leftChild
+    newRoot.leftChild = DisbalancedNode
+    DisbalancedNode.height = 1 + max(getHeight(DisbalancedNode.leftChild), getHeight(DisbalancedNode.rightChild))
+    newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
+    return newRoot
+
+def getBalance(rootNode):                  #! ------------> TC = O(1), SC = O(1)
+    if not rootNode:
+        return 0
+    return getHeight(rootNode.leftChild) - getHeight(rootNode.rightChild)
+
+def insertNode(rootNode,nodeValue):  #! ------------> TC = O(LogN), SC = O(LogN)
+    if not rootNode:                                   # ------------> TC = O(1)
+        return AVLNode(nodeValue)
+    elif nodeValue < rootNode.data:                 # ------------> TC = O(LogN)
+        rootNode.leftChild = insertNode(rootNode.leftChild, nodeValue)
+    else:                                           # ------------> TC = O(LogN)
+        rootNode.rightChild = insertNode(rootNode.rightChild, nodeValue)
+    
+    rootNode.height = 1 + max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))                                       # ------------> TC = O(1)
+
+    balance = getBalance(rootNode)                     # ------------> TC = O(1)
+
+    if balance > 1 and nodeValue < rootNode.leftChild.data:
+        return rightRotation(rootNode)                 # ------------> TC = O(1)
+    if balance > 1 and nodeValue > rootNode.leftChild.data:
+        rootNode.leftChild = leftRotation(rootNode.leftChild)
+        return rightRotation(rootNode)                 # ------------> TC = O(1)
+    
+    if balance < -1 and nodeValue > rootNode.rightChild.data:
+        return leftRotation(rootNode)                  # ------------> TC = O(1)
+    if balance < -1 and nodeValue < rootNode.rightChild.data:
+        rootNode.rightChild = rightRotation(rootNode.rightChild)
+        return leftRotation(rootNode)                  # ------------> TC = O(1)
+
+    return rootNode
 
 
-newAVL = AVLNode(10)                        # ------------> TC = O(1), SC = O(1)
+newAVL = AVLNode(70)                        # ------------> TC = O(1), SC = O(1)
+newAVL = insertNode(newAVL, 90)
+newAVL = insertNode(newAVL, 50)
+newAVL = insertNode(newAVL, 100)
+newAVL = insertNode(newAVL, 80)
+newAVL = insertNode(newAVL, 60)
+newAVL = insertNode(newAVL, 30)
+newAVL = insertNode(newAVL, 20)
+newAVL = insertNode(newAVL, 40)
+
+levelOrder(newAVL)
