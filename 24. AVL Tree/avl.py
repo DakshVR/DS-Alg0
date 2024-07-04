@@ -11,8 +11,15 @@
 # Time complexity is O(LogN), faster insertion, deletion and searching.
 # It takes less time to traverse through Balanced tree than BST which formed with 10,20,30,40,50,60,70 or similar data.
 
-#* Common Operations on AVL
-# Creation of AVL trees,
+#! Common Operations on AVL
+#* Creation of AVL trees,
+
+# newAVL = AVL()
+# 
+# rootnode = None
+# leftchild = None
+# rightchild = None
+
 # Search for a node in AVL trees
 # Traverse all nodes in AVL trees
 # Insert a node in AVL trees
