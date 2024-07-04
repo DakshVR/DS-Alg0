@@ -8,3 +8,14 @@
 # If at any time heights of left and right subtree differ by more than one, then rebalancing is done to restore AVL propery, this process is called ROTATION.
 
 #* Why we need Avl tree?
+# Time complexity is O(LogN), faster insertion, deletion and searching.
+# It takes less time to traverse through Balanced tree than BST which formed with 10,20,30,40,50,60,70 or similar data.
+
+#* Common Operations on AVL
+# Creation of AVL trees,
+# Search for a node in AVL trees
+# Traverse all nodes in AVL trees
+# Insert a node in AVL trees
+# Delete a node from AVL trees
+# Delete entire AVL trees
+ 
