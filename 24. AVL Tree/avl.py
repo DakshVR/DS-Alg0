@@ -121,7 +121,7 @@ def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
         #       return newroot
 
         #? ----> Right Right (RR) = Left Rotation from disbalanced node to grandchild
-        # Algorithm for LL
+        # Algorithm for RR
         # rotateleft(DisbalancedNode):     #! ------------> TC = O(1), SC = O(1)
         #       newroot = Disbalanced.rightchild 
         #       disbalancednode.rightchild = disbalancednode.right.left
