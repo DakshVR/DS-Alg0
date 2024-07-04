@@ -26,3 +26,13 @@
 # Delete a node from AVL trees
 # Delete entire AVL trees
  
+
+#* Creating AVL
+class AVLNode:
+    def __init__(self, data):
+        self.data = data
+        self.leftChild = None
+        self.rightChild = None
+        self.height = 1
+
+newAVL = AVLNode(10)                        # ------------> TC = O(1), SC = O(1)
