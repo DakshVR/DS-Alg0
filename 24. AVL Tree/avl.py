@@ -26,6 +26,7 @@
 # Delete a node from AVL trees
 # Delete entire AVL trees
  
+import queue
 
 #* Creating AVL
 class AVLNode:
@@ -34,5 +35,57 @@ class AVLNode:
         self.leftChild = None
         self.rightChild = None
         self.height = 1
+
+def preOrder(rootNode):                    #! ------------> TC = O(n), SC = O(n)
+    if not rootNode:
+        return
+    print(rootNode.data)                             # ------------> TC = O(1)
+    preOrder(rootNode.leftChild)                     # ------------> TC = O(n/2)
+    preOrder(rootNode.rightChild)                    # ------------> TC = O(n/2)
+
+def inOrder(rootNode):                     #! ------------> TC = O(n), SC = O(n)
+    if not rootNode:
+        return
+    inOrder(rootNode.leftChild)                      # ------------> TC = O(n/2)
+    print(rootNode.data)                             # ------------> TC = O(1)
+    inOrder(rootNode.rightChild)                     # ------------> TC = O(n/2)
+
+def postOrder(rootNode):                   #! ------------> TC = O(n), SC = O(n)
+    if not rootNode:
+        return
+    postOrder(rootNode.leftChild)                    # ------------> TC = O(n/2)
+    postOrder(rootNode.rightChild)                   # ------------> TC = O(n/2)
+    print(rootNode.data)                             # ------------> TC = O(1)
+
+def levelOrder(rootNode):                  #! ------------> TC = O(n), SC = O(n)
+    if not rootNode:
+        return
+    else:
+        customeQueue = queue.Queue()
+        customeQueue.put(rootNode)
+        while not (customeQueue.empty()):
+            root = customeQueue.get()
+            print(root.data)
+            if root.leftChild is not None:
+                customeQueue.put(root.leftChild)
+            if root.rightChild is not None:
+                customeQueue.put(root.rightChild)
+
+def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
+    if rootNode is None or rootNode.data is None:
+        return "Node not found"
+    if rootNode.data == nodeValue:
+        return "Value is Found"
+    elif nodeValue < rootNode.data:
+        if rootNode.leftChild is not None and rootNode.leftChild.data == nodeValue:
+            return "Value found on Left"
+        else:
+            return searchNode(rootNode.leftChild, rootNode)
+    else:
+        if rootNode.rightChild is not None and rootNode.rightChild.data == nodeValue:
+            return "Value found on Right"
+        else:
+            return searchNode(rootNode.rightChild, rootNode)
+
 
 newAVL = AVLNode(10)                        # ------------> TC = O(1), SC = O(1)
