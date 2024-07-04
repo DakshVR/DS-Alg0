@@ -132,6 +132,19 @@ def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
         #? ----> Right Left (RL)
                 # Step 1: rotate right disbalanced.rightchild
                 # Step 2: rotate left disbalancedNode
+        # rotateright(DisbalancedNode):    #! ------------> TC = O(1), SC = O(1)
+        #       newroot = Disbalanced.leftchild
+        #       disbalancednode.left = disbalancednode.left.right
+        #       newroot.right = disbalanced
+        #       update height of disbalamced and newroot
+        #       return newroot
+
+        # rotateleft(DisbalancedNode):     #! ------------> TC = O(1), SC = O(1)
+        #       newroot = Disbalanced.rightchild 
+        #       disbalancednode.rightchild = disbalancednode.right.left
+        #       newroot.left = disbalanced
+        #       update height of disbalamced and newroot
+        #       return newroot
         
 
 def insertion(rootNode,nodeValue):
