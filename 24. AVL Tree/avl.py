@@ -86,6 +86,27 @@ def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
             return "Value found on Right"
         else:
             return searchNode(rootNode.rightChild, rootNode)
+        
+#! 2 cases
+#* Rotation is not required : Here it is same as BST
+        #* ---> If value less than root node, go towards left
+        #*  ---> Else go towards right
+#* Rotation is required
+        #* 4 conditions
+        #! ----> Left Left (LL)   = Right Rotation from disbalanced node to grandchild
+        # Algorithm for LL
+        # rotateright(DisbalancedNode):    #! ------------> TC = O(1), SC = O(1)
+        #       newroot = Disbalanced.leftchild
+        #       disbalancednode.left = disbalancednode.left.right
+        #       newroot.right = disbalanced
+        #       update height of disbalamced and newroot
+        #       return newroot
+
+        #* ----> Left Right (LR)
+        #* ----> Right Right (RR)
+        #* ----> Right Left (RL)
+def insertion(rootNode,nodeValue):
+    pass
 
 
 newAVL = AVLNode(10)                        # ------------> TC = O(1), SC = O(1)
