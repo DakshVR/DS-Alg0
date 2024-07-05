@@ -258,6 +258,11 @@ def deleteNode(rootNode, nodeValue): #! ------------> TC = O(LogN), SC = O(LogN)
     
     return rootNode
 
+def deleteAVL(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "AVL Tree Deleted."
 
 # newAVL = AVLNode(70)                        # ------------> TC = O(1), SC = O(1)
 # newAVL = insertNode(newAVL, 90)
@@ -270,9 +275,16 @@ def deleteNode(rootNode, nodeValue): #! ------------> TC = O(LogN), SC = O(LogN)
 # newAVL = insertNode(newAVL, 40)
 # levelOrder(newAVL)
 
+# newAVL = AVLNode(5)
+# newAVL = insertNode(newAVL, 10)
+# newAVL = insertNode(newAVL, 15)
+# newAVL = insertNode(newAVL, 20)
+# newAVL = deleteNode(newAVL, 15)
+# levelOrder(newAVL)
+
 newAVL = AVLNode(5)
 newAVL = insertNode(newAVL, 10)
 newAVL = insertNode(newAVL, 15)
 newAVL = insertNode(newAVL, 20)
-newAVL = deleteNode(newAVL, 15)
+deleteAVL(newAVL)
 levelOrder(newAVL)
