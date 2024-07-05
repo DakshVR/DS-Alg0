@@ -87,7 +87,7 @@ def searchNode(rootNode, nodeValue): #! ------------> TC = O(logN), SC = O(logN)
         else:
             return searchNode(rootNode.rightChild, nodeValue)
         
-#! 2 cases
+#! Insertion: 2 cases
 #* Rotation is not required : Here it is same as BST
         #* ---> If value less than root node, go towards left
         #*  ---> Else go towards right
@@ -199,6 +199,21 @@ def insertNode(rootNode,nodeValue):  #! ------------> TC = O(LogN), SC = O(LogN)
 
     return rootNode
 
+
+#! Deletion: 2 cases
+#* Rotation is not required : 
+        #* ---> Node to be deleted is Leaf node
+                # find the node and delete
+
+        #* ---> Node to be deleted has 1 child
+                # Assign child to the nodes parent
+
+        #* ---> Node to be deleted has 2 child
+                # Find the successor, replace that with root
+                # Child of successor becomes child of it's parents
+
+#* Rotation is required
+# Same as insertion, 4 conditions, LL, LR, RR, RL
 
 newAVL = AVLNode(70)                        # ------------> TC = O(1), SC = O(1)
 newAVL = insertNode(newAVL, 90)
