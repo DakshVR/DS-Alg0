@@ -288,3 +288,17 @@ newAVL = insertNode(newAVL, 15)
 newAVL = insertNode(newAVL, 20)
 deleteAVL(newAVL)
 levelOrder(newAVL)
+
+
+# ! Time and Space Complexity of AVL tree
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# *                   #       Time          #         Space         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Create AVL          #        O(1)         #           O(1)        #
+# Insert Node AVL     #      O(logN)        #         O(logN)       #
+# Traverse AVL        #        O(N)         #           O(N)        #
+# Search node in AVL  #      O(logN)        #         O(logN)       #
+# Delete node in AVL  #      O(logN)        #         O(logN)       #
+# Delete AVL          #        O(1)         #           O(1)        #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
