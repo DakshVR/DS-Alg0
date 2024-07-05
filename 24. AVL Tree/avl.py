@@ -215,14 +215,64 @@ def insertNode(rootNode,nodeValue):  #! ------------> TC = O(LogN), SC = O(LogN)
 #* Rotation is required
 # Same as insertion, 4 conditions, LL, LR, RR, RL
 
-newAVL = AVLNode(70)                        # ------------> TC = O(1), SC = O(1)
-newAVL = insertNode(newAVL, 90)
-newAVL = insertNode(newAVL, 50)
-newAVL = insertNode(newAVL, 100)
-newAVL = insertNode(newAVL, 80)
-newAVL = insertNode(newAVL, 60)
-newAVL = insertNode(newAVL, 30)
-newAVL = insertNode(newAVL, 20)
-newAVL = insertNode(newAVL, 40)
+def findSuccessor(rootNode):
+    if rootNode is None or rootNode.leftChild is None:
+        return rootNode
+    return findSuccessor(rootNode.leftChild)
 
+def deleteNode(rootNode, nodeValue): #! ------------> TC = O(LogN), SC = O(LogN)
+    if not rootNode:
+        return rootNode                                # ------------> TC = O(1)
+    elif nodeValue < rootNode.data:                 # ------------> TC = O(LogN)
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
+    elif nodeValue > rootNode.data:                 # ------------> TC = O(LogN)
+        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
+    else:
+        if rootNode.leftChild is None:                 # ------------> TC = O(1)
+            temp = rootNode.rightChild
+            rootNode = None
+            return temp
+        elif rootNode.rightChild is None:              # ------------> TC = O(1)
+            temp = rootNode.leftChild
+            rootNode = None
+            return temp
+        temp = findSuccessor(rootNode.rightChild)   # ------------> TC = O(LogN)
+        rootNode.data = temp.data
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)       # ------------> TC = O(LogN)
+    
+    rootNode.height = 1 + max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))                                       # ------------> TC = O(1)
+
+    balance = getBalance(rootNode)
+    if balance > 1 and getBalance(rootNode.leftChild) >=0:
+        return rightRotation(rootNode)                 # ------------> TC = O(1)
+    if balance < -1 and getBalance(rootNode.rightChild) <= 0:
+        return leftRotation(rootNode)                  # ------------> TC = O(1)
+    
+    if balance > 1 and getBalance(rootNode.leftChild) < 0:
+        rootNode.leftChild = leftRotation(rootNode.leftChild)
+        return rightRotation(rootNode)                 # ------------> TC = O(1)
+    
+    if balance < -1 and getBalance(rootNode.rightChild) > 0:
+        rootNode.rightChild = leftRotation(rootNode.rightChild)
+        return leftRotation(rootNode)                  # ------------> TC = O(1)
+    
+    return rootNode
+
+
+# newAVL = AVLNode(70)                        # ------------> TC = O(1), SC = O(1)
+# newAVL = insertNode(newAVL, 90)
+# newAVL = insertNode(newAVL, 50)
+# newAVL = insertNode(newAVL, 100)
+# newAVL = insertNode(newAVL, 80)
+# newAVL = insertNode(newAVL, 60)
+# newAVL = insertNode(newAVL, 30)
+# newAVL = insertNode(newAVL, 20)
+# newAVL = insertNode(newAVL, 40)
+# levelOrder(newAVL)
+
+newAVL = AVLNode(5)
+newAVL = insertNode(newAVL, 10)
+newAVL = insertNode(newAVL, 15)
+newAVL = insertNode(newAVL, 20)
+newAVL = deleteNode(newAVL, 15)
 levelOrder(newAVL)
