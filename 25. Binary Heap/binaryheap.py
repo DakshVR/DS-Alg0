@@ -26,3 +26,16 @@
 #* Left child = cell[2x]
 #* Right child = cell[2x + 1]
 #* Leave index 0, as it becomes easy to calculate the indexes of the remaining elements
+
+#! Creation of Binary Heap
+#* Initialize fixed size List
+#* set size of the Binary Heap to 0, as no elements are present 
+
+class Heap():
+    def __init__(self, size):                   
+        self.customList = (size+1) * [None]            # ------------> TC = O(1)
+        self.heapsize = 0                              # ------------> TC = O(1)
+        self.maxsize = size + 1   # +1 becuase we won't use index 0
+
+
+newBinaryHeap = Heap(5)                 #! ------------> TC = O(1), SC = O(n)
