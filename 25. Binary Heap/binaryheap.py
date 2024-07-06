@@ -61,3 +61,15 @@ def sizeOfheap(rootNode):                  #! ------------> TC = O(1), SC = O(1)
         return rootNode.heapsize                       # ------------> TC = O(1)
 
 print(sizeOfheap(newBinaryHeap))
+
+
+#! Traversal of Binary Heap
+#* We again have 4 traversal as Binary Search Tree or Binary tree.
+#* Level Order
+
+def levelOrder(rootNode):                  #! ------------> TC = O(n), SC = O(1)
+    if not rootNode:                                   # ------------> TC = O(1)
+        return
+    else:
+        for i in range(1, rootNode.heapsize+1):        # ------------> TC = O(n)
+            print(rootNode.customList[i])              # ------------> TC = O(1)
