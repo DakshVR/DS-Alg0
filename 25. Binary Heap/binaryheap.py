@@ -169,12 +169,17 @@ def extractNode(rootNode, heapType): #! ------------> TC = O(LogN), SC = O(LogN)
         heapifyTreeExtract(rootNode, 1, heapType)
         return extractNode
 
+#! Delete entire Binary Heap
+#* CusttomList = [None] 
+    
+def deletHeap(rootNode):                   #! ------------> TC = O(1), SC = O(1)
+    rootNode.customList = None
 
 newheap = Heap(5)
 insertNode(newheap, 4, "Maximum")
 insertNode(newheap, 5, "Maximum")
 insertNode(newheap, 2, "Maximum")
 insertNode(newheap, 1, "Maximum")
-extractNode(newheap, "Maximum")
+extractNode(newheap)
 levelOrder(newheap)
 
