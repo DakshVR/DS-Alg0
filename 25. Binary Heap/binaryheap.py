@@ -183,3 +183,17 @@ insertNode(newheap, 1, "Maximum")
 extractNode(newheap)
 levelOrder(newheap)
 
+
+# ! Time and Space Complexity of Binary Heap
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# *                         #       Time          #         Space         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Create Binary Heap        #        O(1)         #           O(N)        #
+# Peek of Heap              #        O(1)        #            O(1)        #
+# Size of Heap              #        O(1)         #           O(1)        #
+# Traversal of Heap         #        O(N)         #           O(1)        #
+# Insert a node to Heap     #      O(logN)        #         O(logN)       #
+# Extract a node from Heap  #      O(logN)        #         O(logN)       #
+# Delete Binary heap        #        O(1)         #           O(1)        #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
