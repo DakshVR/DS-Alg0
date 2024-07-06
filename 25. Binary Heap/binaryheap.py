@@ -38,4 +38,26 @@ class Heap():
         self.maxsize = size + 1   # +1 becuase we won't use index 0
 
 
-newBinaryHeap = Heap(5)                 #! ------------> TC = O(1), SC = O(n)
+newBinaryHeap = Heap(5)                    #! ------------> TC = O(1), SC = O(n)
+
+
+#! Peek top of Binary Heap
+#* We return the root.
+#* Return List[1]
+
+def peekofHeap(rootNode):                  #! ------------> TC = O(1), SC = O(1)
+    if not rootNode:                                   # ------------> TC = O(1)
+        return
+    return rootNode.customList[1]                      # ------------> TC = O(1)
+
+
+#! Size of Binary Heap
+#* Return of Filled cells
+
+def sizeOfheap(rootNode):                  #! ------------> TC = O(1), SC = O(1)
+    if not rootNode:                                   # ------------> TC = O(1)
+        return 0                                       # ------------> TC = O(1)
+    else:
+        return rootNode.heapsize                       # ------------> TC = O(1)
+
+print(sizeOfheap(newBinaryHeap))
