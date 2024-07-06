@@ -60,7 +60,7 @@ def sizeOfheap(rootNode):                  #! ------------> TC = O(1), SC = O(1)
     else:
         return rootNode.heapsize                       # ------------> TC = O(1)
 
-print(sizeOfheap(newBinaryHeap))
+# print(sizeOfheap(newBinaryHeap))
 
 
 #! Traversal of Binary Heap
@@ -104,9 +104,77 @@ def insertNode(rootNode, nodeValue, heapType):#! ------------> TC = O(LogN), SC 
     heapifyTreeInsert(rootNode, rootNode.heapsize, heapType) # ------------> TC = O(logN)
     return "Value is Inserted"
 
+# newheap = Heap(5)
+# insertNode(newheap, 4, "Minimum")
+# insertNode(newheap, 5, "Minimum")
+# insertNode(newheap, 2, "Minimum")
+# insertNode(newheap, 1, "Minimum")
+# levelOrder(newheap)
+
+#! Extract Min/Extract Max
+#* We can only Extract root, other extraction of element is not allowed as per the property of the Binary Heap.
+#* Once root is extracted, we need to make adjustments.
+#* For example, if it is Min heap, we replace it with last element, which is to be found on the very left on last level.
+#* Then replace the root with the minimum children which is found on left and keep on swapping until the property of min heap is met.
+
+def heapifyTreeExtract(rootNode, index, heapType):
+    leftIndex = index * 2
+    rightIndex = index * 2 +1
+    swapChild = 0
+    
+    if rootNode.heapsize < leftIndex:
+        return
+    elif rootNode.heapsize == leftIndex:
+        if heapType == "Minimum":
+            if rootNode.customList[index] > rootNode.customList[leftIndex]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[leftIndex]
+                rootNode.customList[leftIndex] = temp
+            return
+        else:
+            if rootNode.customList[index] < rootNode.customList[leftIndex]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[leftIndex]
+                rootNode.customList[leftIndex] = temp
+            return
+    else:
+        if heapType == "Minimum":
+            if rootNode.customList[leftIndex] < rootNode.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+            if rootNode.customList[index] > rootNode.customList[swapChild]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[swapChild]
+                rootNode.customList[swapChild] = temp
+        else:
+            if rootNode.customList[leftIndex] > rootNode.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+            if rootNode.customList[index] < rootNode.customList[swapChild]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[swapChild]
+                rootNode.customList[swapChild] = temp
+        heapifyTreeExtract(rootNode, swapChild, heapType)
+
+def extractNode(rootNode, heapType): #! ------------> TC = O(LogN), SC = O(LogN)
+    if rootNode.heapsize == 0:
+        return
+    else:
+        extractNode = rootNode.customList[1]
+        rootNode.customList[1] = rootNode.customList[rootNode.heapsize]
+        rootNode.customList[rootNode.heapsize] = None
+        rootNode.heapsize -= 1
+        heapifyTreeExtract(rootNode, 1, heapType)
+        return extractNode
+
+
 newheap = Heap(5)
-insertNode(newheap, 4, "Minimum")
-insertNode(newheap, 5, "Minimum")
-insertNode(newheap, 2, "Minimum")
-insertNode(newheap, 1, "Minimum")
+insertNode(newheap, 4, "Maximum")
+insertNode(newheap, 5, "Maximum")
+insertNode(newheap, 2, "Maximum")
+insertNode(newheap, 1, "Maximum")
+extractNode(newheap, "Maximum")
 levelOrder(newheap)
+
