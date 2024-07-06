@@ -73,3 +73,40 @@ def levelOrder(rootNode):                  #! ------------> TC = O(n), SC = O(1)
     else:
         for i in range(1, rootNode.heapsize+1):        # ------------> TC = O(n)
             print(rootNode.customList[i])              # ------------> TC = O(1)
+
+
+#! Insert value in Binary Heap
+#* Find unused cell and insert the value
+#* Check it the parents value is greater, if so swap until the root is the smallest value. We need to maintain the property
+            
+def heapifyTreeInsert(rootNode, index, heapType): #! ------------> TC = O(LogN), SC = O(LogN)
+    parentIndex = int(index / 2)                       # ------------> TC = O(1)
+    if index <= 1:                                     # ------------> TC = O(1)
+        return
+    if heapType == "Minimum":                          # ------------> TC = O(1)
+        if rootNode.customList[index] < rootNode.customList[parentIndex]:
+            temp = rootNode.customList[index]
+            rootNode.customList[index] = rootNode.customList[parentIndex]
+            rootNode.customList[parentIndex] = temp
+        heapifyTreeInsert(rootNode, parentIndex, heapType)# ------------> TC = O(LogN) 
+    elif heapType == "Maximum":                        # ------------> TC = O(1)
+        if rootNode.customList[index] > rootNode.customList[parentIndex]:
+            temp = rootNode.customList[index]
+            rootNode.customList[index] = rootNode.customList[parentIndex]
+            rootNode.customList[parentIndex] = temp
+        heapifyTreeInsert(rootNode, parentIndex, heapType) # ------------> TC = O(LogN)
+
+def insertNode(rootNode, nodeValue, heapType):#! ------------> TC = O(LogN), SC = O(LogN)
+    if rootNode.heapsize + 1 == rootNode.maxsize:      # ------------> TC = O(1)
+        return "The Binary heap is full."              # ------------> TC = O(1)
+    rootNode.customList[rootNode.heapsize + 1] = nodeValue # ------------> TC = O(1)
+    rootNode.heapsize += 1                             # ------------> TC = O(1)
+    heapifyTreeInsert(rootNode, rootNode.heapsize, heapType) # ------------> TC = O(logN)
+    return "Value is Inserted"
+
+newheap = Heap(5)
+insertNode(newheap, 4, "Minimum")
+insertNode(newheap, 5, "Minimum")
+insertNode(newheap, 2, "Minimum")
+insertNode(newheap, 1, "Minimum")
+levelOrder(newheap)
