@@ -16,16 +16,16 @@
 # Hashing                   #      O(1)/O(N       #
 # # # # # # # # # # # # # # # # # # # # # # # # # #  
 
-# Hash function is a function that can be used to map data of arbitrary size to data of fixed size.
+#? Hash function is a function that can be used to map data of arbitrary size to data of fixed size.
+#? Key : input data givin by the user.
+#? Hash value: value returned by the Hash Function
+#* Hash Table: It is a data structure which implements an associative array abstract data type, a structure that can map keys to values
 
-# Key : input data givin by the user.
-# Hash value: value returned by the Hash Function
+#! Key  ---> Hash Function  --> Hash Value
 
-# Key  ---> Hash Function  --> Hash Value
+#! Collison : A collison occurs when two different keys to a hash function produce the same output.
 
-# Collison : A collison occurs when two different keys to a hash function produce the same output.
-
-# Properties of good hash fumction
+# Properties of good hash fuction
 """ 
 1 - It distributes hash values uniformly across hash tables.
 2 - It has to use all the input data provided by the user
