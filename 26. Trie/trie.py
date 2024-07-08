@@ -8,3 +8,32 @@
 # Any node in trie can store non repetitive multiple characters
 # Every node stores link of the next character of the string
 # Every node keeps track of "end of string"
+
+#? If you want to store AIR, then if need to add T, then if BAR
+#          AB
+#         / \
+#        I   A
+#       /    /
+#     R T    R
+#     /  \   /
+#    .    .  .
+
+#? Why we need it?
+#* Spelling Checker
+#* Auto completion
+
+#* google predicting, what you'll type next while searching, might be using advanced technologies.
+
+#? This is how it looks
+
+# # # # # # # # # # # # # # # # # # # 
+#             MAP                   # 
+# # # # # # # # # # # # # # # # # # # 
+# Characters  #  Link to Trie Node  # 
+#             #                     # 
+#             #                     # 
+#             #                     # 
+#             #                     # 
+# # # # # # # # # # # # # # # # # # # 
+#        End of String              # 
+# # # # # # # # # # # # # # # # # # # 
