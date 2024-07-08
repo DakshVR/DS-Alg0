@@ -59,4 +59,25 @@ class Trie:
     def __init__(self):
         self.rootNode = TrieNode()
 
-newTrie = Trie()                           #! ------------> TC = O(1), SC = O(n)
+    #! Insertion of a string in a Trie
+    #* It has 4 cases:
+    #* Case 1: The Trie is Blank
+    #* Case 2: New strings prefix is common to another strings prefix
+    #* Case 3: String to be inserted is already presented in Trie
+        
+    def insertString(self, word):          #! ------------> TC = O(m), SC = O(m)
+        current = self.rootNode                        # ------------> TC = O(1)
+        for i in word:
+            char = i
+            node = current.children.get(char)
+            if node == None:
+                node = TrieNode()
+                current.children.update({char: node})
+            current = node
+        current.endOfString = True
+        print("Success")
+
+newTrie = Trie()                           #! ------------> TC = O(1), SC = O(1)
+newTrie.insertString("App")
+newTrie.insertString("Appl")
+
