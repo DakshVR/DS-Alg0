@@ -79,17 +79,36 @@ OPEN Addressing
 create 2X size of current Hash Table and recall hashing for current keys.
 """
 
-#! Pros and Cons of Collison resolution techniques.
+#? Pros and Cons of Collison resolution techniques.
 
 #? 1st - Direct Chaining: 
-#        Hash table never gets full   --> Positive
-#        Huge Linked List causes performance leaks(Time complexity for search operation becomes O(n))
+#*        Hash table never gets full   --> Positive
+#!        Huge Linked List causes performance leaks(Time complexity for search operation becomes O(n))
 
 #? Open Addressing
-#       Easy Implementation
-#       When Hash table is full, creation of new Hash table affects performance (Time complexity for search operation becomes O(N))
+#*       Easy Implementation
+#!       When Hash table is full, creation of new Hash table affects performance (Time complexity for search operation becomes O(N))
 
 #* If the input size is known always use "OPEN Addressing"
 
 #* If we perform deletion operations frequently use "Direct Chaining"
 
+#! Practical Use of Hashing
+   #* Password Verification, store hashed passwords.
+   #* File Systems: File path is mapped to physical location of Disk
+            # Path file is taken as key and hash value is stored 
+
+
+#? Pros and Cons of hashing
+
+#* On an average Insertion/Deletion/Search Operation takes O(1) time.
+#! When Hash function is not good enough Insertion/Deletion/Search Operation takes O(N) time.
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# *   Operations    #  Array/Pyhton List  #  Linked List  #  Tree   #   Hash  #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#    Inserion       #      O(N)           #     O(N)      # O(LogN) # O(1)/O(N)
+#    Deletion       #      O(N)           #     O(N)      # O(LogN) # O(1)/O(N)
+#    Search         #      O(N)           #     O(N)      # O(LogN) # O(1)/O(N)
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
