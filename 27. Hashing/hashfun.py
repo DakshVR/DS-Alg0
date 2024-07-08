@@ -71,7 +71,12 @@ Interval between probes is computed by another hash function
 
 # Hash Table is Full
 """
-Direct Chaining: Will never arise.
+Direct Chaining: Will never arise, once the table full, the new items are linked to previous.
+"""
+
+"""
+OPEN Addressing
+create 2X size of current Hash Table and recall hashing for current keys.
 """
 
 
