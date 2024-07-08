@@ -37,3 +37,26 @@
 # # # # # # # # # # # # # # # # # # # 
 #        End of String              # 
 # # # # # # # # # # # # # # # # # # # 
+
+#? Common Operations on Trie
+#* Creation of Trie
+#* Insertion of Trie
+#* Search for a string in trie
+#* Deletion from Trie
+
+
+#! Creation of Trie
+#* Initialize Trie Calss
+#*       (    )
+#*       Logical       looks like above table
+
+class TrieNode():
+    def __init__(self):
+        self.children = {}
+        self.endOfString = False
+
+class Trie:
+    def __init__(self):
+        self.rootNode = TrieNode()
+
+newTrie = Trie()                           #! ------------> TC = O(1), SC = O(n)
