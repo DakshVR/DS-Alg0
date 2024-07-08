@@ -76,8 +76,26 @@ class Trie:
             current = node
         current.endOfString = True
         print("Success")
+    
+    #! Search for a string in trie
+    #* Case 1: string doesn't exist in Trie
+    #* Case 2: String is a prefix of another string, but it doesn't exist in Trie.
+    
+    def search(self, word):                #! ------------> TC = O(m), SC = O(1)
+        currentNode = self.rootNode
+        for i in word:
+            node = currentNode.children.get(i)
+            if node == None:
+                return False
+            currentNode = node
+        
+        if currentNode.endOfString == True:
+            return True
+        else:
+            return False
 
 newTrie = Trie()                           #! ------------> TC = O(1), SC = O(1)
 newTrie.insertString("App")
 newTrie.insertString("Appl")
 
+print(newTrie.search("Ap"))
