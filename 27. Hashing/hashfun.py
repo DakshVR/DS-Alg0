@@ -25,6 +25,24 @@
 
 #! Collison : A collison occurs when two different keys to a hash function produce the same output.
 
+#! Hash Function Examples
+
+# Mod Function
+# def mod(number, cellNumber):
+#       return number % cellNumber
+# 
+#  mod(400, 24)  -----> 16
+#  mod(700, 24)  -----> 4
+
+# def modASCII(string, cellNumber):
+#       total = 0
+#       for i in string:
+#           total += ord(i)
+#       return total % cellNumber
+
+# modASCII("ABC", 24)   -----> 6
+
+
 # Properties of good hash fuction
 """ 
 1 - It distributes hash values uniformly across hash tables.
@@ -37,7 +55,7 @@ Collison Resolution Technique
 1st - Direct Chaining
 Implements the buckets as Linked List. Colliding elements are stored in this lists.
 
-2nd - Open Addrrssing
+2nd - Open Addressing
 Colliding elements are stoed in other vacant buckets. During storage amd lookup these are found through so called probing
 
 i - Linear Probing
