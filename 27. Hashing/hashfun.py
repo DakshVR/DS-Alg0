@@ -1,3 +1,21 @@
+
+#? What is Hashing
+# Hashing is a method of soting and indexing data. The idea behind hashing is to allow large amounts of data to be indexed using keys commonly created by formulas.
+
+#? Why we need Hashing?
+# It is time efficient in case of SEARCH Operations.
+
+# ! Time Complexity for Search Operations in Ideal scenario
+
+# # # # # # # # # # # # # # # # # # # # # # # # # #
+# *   DATA Structures       #       Time          #
+# # # # # # # # # # # # # # # # # # # # # # # # # #
+# Array / Python Lists      #       O(logN)       #
+# Linked List               #        O(N)         #
+# Tree                      #       O(logN)       #
+# Hashing                   #      O(1)/O(N       #
+# # # # # # # # # # # # # # # # # # # # # # # # # #  
+
 # Hash function is a function that can be used to map data of arbitrary size to data of fixed size.
 
 # Key : input data givin by the user.
@@ -37,3 +55,5 @@ Interval between probes is computed by another hash function
 """
 Direct Chaining: Will never arise.
 """
+
+
