@@ -79,4 +79,17 @@ OPEN Addressing
 create 2X size of current Hash Table and recall hashing for current keys.
 """
 
+#! Pros and Cons of Collison resolution techniques.
+
+#? 1st - Direct Chaining: 
+#        Hash table never gets full   --> Positive
+#        Huge Linked List causes performance leaks(Time complexity for search operation becomes O(n))
+
+#? Open Addressing
+#       Easy Implementation
+#       When Hash table is full, creation of new Hash table affects performance (Time complexity for search operation becomes O(N))
+
+#* If the input size is known always use "OPEN Addressing"
+
+#* If we perform deletion operations frequently use "Direct Chaining"
 
