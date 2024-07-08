@@ -93,9 +93,46 @@ class Trie:
             return True
         else:
             return False
+        
+#! Deletion from Trie
+#* Some other prefix of string is same as the one that we want to delete. (API, APPLE).
+#* The string is a prefix of another string. (API, APIS), here won't delete, just set end of string to false
+#* Other sting is a prefix of this string. (APIS, AP)
+#* Noe any node depends on string
+#* Deletion starts from leaf, and go up
+        
+def deleteString(rootNode, word, index):
+    char = word[index]
+    currentNode = rootNode.children.get(char)
+    canThisNodeBeDeleted = False
+
+    if len(currentNode.children) > 1:
+        deleteString(currentNode, word, index+1)
+        return False
+    
+    if index == len(word) - 1:
+        if len(currentNode.children) >= 1:
+            currentNode.endOfString = False
+            return False
+        else:
+            rootNode.children.pop(char)
+            return True
+    
+    if currentNode.endOfString == True:
+        deleteString(currentNode, word, index+1)
+        return False
+
+    canThisNodeBeDeleted = deleteString(currentNode, word, index+1)
+    if canThisNodeBeDeleted == True:
+        rootNode.children.pop(char)
+        return True
+    else:
+        return False
+
+
 
 newTrie = Trie()                           #! ------------> TC = O(1), SC = O(1)
 newTrie.insertString("App")
 newTrie.insertString("Appl")
-
-print(newTrie.search("Ap"))
+deleteString(newTrie.rootNode, "App", 0)
+print(newTrie.search("App"))
