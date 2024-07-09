@@ -18,3 +18,18 @@
 #*          |______ Stable: if after sorting the contents does not change      the                 sequence of similar content in which they appear: Insertion
 #*          |______ Unstable: if it change the sequence of similar content: Quick
 
+#! Sorting Terminology
+
+#* Increasing order: 1, 3, 5, 7, 9, 11
+#* Decreasing order: 11, 9, 7, 5, 3, 1
+#* Non-increasing Order: 11, 9, 7, 5, 5, 3, 1
+#* Non-decreasing Order: 1, 3, 5, 7, 7, 9, 11
+
+#! Sorting Algorithms
+#* Bubble sort
+#* Selection sort
+#* Insertion sort
+#* Bucket sort
+#* Merge sort
+#* Quick sort
+#* Heap sort
