@@ -33,3 +33,8 @@
 #* Merge sort
 #* Quick sort
 #* Heap sort
+
+#! Which one to select?
+#*  Stability
+#*  Space efficient
+#*  Time efficient
