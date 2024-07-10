@@ -53,3 +53,32 @@ print(bucket(arr))
 #! When to avoid?
 #  When space is concern
 
+
+#!     If there are Negative Numbers
+
+def bucketSort(customList):
+    numberofBuckets = round(math.sqrt(len(customList)))
+    minValue = min(customList)
+    maxValue = max(customList)
+    rangeVal = (maxValue - minValue) / numberofBuckets
+
+    buckets = []
+    for i in range(numberofBuckets):
+        buckets.append([])
+ 
+    for j in customList:
+        if j == maxValue:               
+            buckets[-1].append(j)
+        else:
+            index_b = math.floor( (j - minValue) / rangeVal)
+            buckets[index_b].append(j)
+ 
+    sorted_array = []
+    for i in range(numberofBuckets):
+        buckets[i] = insertionsort(buckets[i])
+        sorted_array.extend(buckets[i])
+
+    return sorted_array
+    
+arr = [3,5,6,7,-2,8,-1,4,0,1,2,9]
+print(bucketSort(arr))
