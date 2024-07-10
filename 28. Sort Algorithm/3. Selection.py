@@ -16,10 +16,10 @@ def Selection(arr):                      #! ------------> TC = O(n^2), SC = O(1)
 arr = [3,5,6,7,2,8,1,4,9]
 print(Selection(arr))
 
-
-#* When to use Bubble sort?
+#* When to use Selection sort?
 #  When we have insufficient memory
 #  Easy to implement
+#  When we have continuous inflow of numbers and we want to keep them sorted
 
 #! When to avoid?
 #  When time is a concern
