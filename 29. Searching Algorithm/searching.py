@@ -34,8 +34,7 @@ print(linearSearch(arr, 2))
 #        If the middle is less than the value, move left up
 #  If value is not found, return -1
 
-def binarySearch(arr, value):        #! TC: O(N) , SC: O(1) 
-    
+def binarySearch(arr, value):
     start = 0
     end = len(arr)
     middle = math.floor((start+end)/2)
@@ -49,3 +48,4 @@ def binarySearch(arr, value):        #! TC: O(N) , SC: O(1)
 
 arr = [1,2,3,4,5,6,7,8,9,166,555,2345]
 print(binarySearch(arr, 8))
+
