@@ -16,3 +16,26 @@
 #  Cyclic graph: A graph which has at least one loop
 #  Acyclic graph: A graph with no loop
 #  Tree: It is a special case of directed acyclic graph
+
+#! Types of Graphs
+
+#? Graph
+#   | 
+#   |--> Directed
+#   |       |
+#   |       |----> Weighted
+#   |       |            |
+#   |       |            |--> Positive
+#   |       |            |--> Negative
+#   |       |
+#   |       |----> Unweighted
+#   |
+#   |--> Undirected
+#   |       |
+#   |       |----> Weighted
+#   |       |            |
+#   |       |            |--> Positive
+#   |       |            |--> Negative
+#   |       |
+#   |       |----> Unweighted
+
