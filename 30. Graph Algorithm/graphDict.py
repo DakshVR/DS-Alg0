@@ -31,18 +31,25 @@ class Graph:
             return True
         return False
 
+    def removeVertex(self, vertex):
+        if vertex in self.adjacency_list.keys():
+            for othervertex in self.adjacency_list[vertex]:
+                self.adjacency_list[othervertex].remove(vertex)
+            del self.adjacency_list[vertex]
+            return True
+        return False
+
 customGraph = Graph()
 customGraph.addvertex("A")
 customGraph.addvertex("B")
 customGraph.addvertex("C")
-print(customGraph.addEdge("A", "B"))
-print(customGraph.addEdge("A", "C"))
-print(customGraph.addEdge("B", "C"))
+customGraph.addvertex("D")
+customGraph.addEdge("A", "B")
+customGraph.addEdge("A", "C")
+customGraph.addEdge("A", "D")
+customGraph.addEdge("B", "C")
+customGraph.addEdge("C", "D")
 customGraph.print_graph()
-print(customGraph.removeEdge("A", "C"))
+customGraph.removeVertex("D")
+print("Removed a Vertex")
 customGraph.print_graph()
-
-# graph = Graph(customDict)
-# print(graph.gdict)
-# graph.addEdge("e", "c")
-# print(graph.gdict["a"])
