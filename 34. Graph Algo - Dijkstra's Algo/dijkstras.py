@@ -1,5 +1,7 @@
 
 
+#! Dijkstras Algorithm doesn't work with negative cycle
+
 import heapq
 
 #! class for edge
