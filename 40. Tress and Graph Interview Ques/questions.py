@@ -8,7 +8,8 @@ class Graph:
         self.gdict[vertex].append(edge)
     
     def checkRoute(self, startNode, endNode):
-        for chabi in gdict.keys():
+        for chabi in self.gdict:
+            
             print(chabi)
 
 customDict = { "a" : ["c","d", "b"],
