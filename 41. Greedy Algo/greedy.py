@@ -38,12 +38,12 @@ activities =[
     ['A6', 8, 9],
 ]
 
-def printMaxActivities(activities):
-    activities.sort(key= lambda x: x[2])
+def printMaxActivities(activities):    #! ------------> TC = O(NlogN), SC = O(1)
+    activities.sort(key= lambda x: x[2])           # ------------> TC = O(NlogN)
     i = 0
-    firstActivity = activities[i][0]
+    firstActivity = activities[i][0]                   # ------------> TC = O(1)
     print(firstActivity)
-    for j in range(len(activities)):
+    for j in range(len(activities)):                   # ------------> TC = O(N)
         if activities[j][1] > activities[i][2]:
             print(activities[j][0])
             i = j
