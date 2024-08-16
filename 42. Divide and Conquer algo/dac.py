@@ -179,9 +179,9 @@ print(f"Maximum profits from items: {answer2}")
 #           ABCE, ABDE
 
 #  Example:
-#   S1 = "elephant"
-#   S2 = "erepat"
-#   Output = 5, "eepat"
+#       S1 = "elephant"
+#       S2 = "erepat"
+#       Output = 5, "eepat"
 
 #   Subproblem:
 #       Option1 = 1 + f(2,8 : 2,7)
@@ -204,3 +204,138 @@ S1 = "elephant"
 S2 = "eretpat"
 lcs = findLCS(S1, S2, 0, 0)
 print(f"The Longest Common Subsequence (LCS) is: {lcs}")
+
+#*##############################################################################################################################################################################################################################################################################################################################
+#*##############################################################################
+
+#! Longest Palindromic Subsequence (LPS)
+#   S is a given string
+#   Find the logest palindromic subsequence(LPS)
+#   
+#   Example:
+#          S = "ELRMENMET"
+#           Output = 5
+#           LPS: "EMEME"
+
+#   Example:
+#          S = "AMEEWMEA"
+#           Output = 6
+#           LPS: "AMEEMA"
+#   Subproblem:
+#           Option1: 2 + f(2,8)
+#           Option2: 0 + f(1,8)
+#           Option3: 0 + f(2,9)
+#       max(option1, option2, option3)
+
+def LPS(string, startIndex, endIndex):
+    if startIndex > endIndex:
+        return 0
+    elif startIndex == endIndex:
+        return 1
+    elif string[startIndex] == string[endIndex]:
+        return 2 + LPS(string, startIndex + 1, endIndex -1)
+    else:
+        option1 = LPS(string, startIndex, endIndex -1)
+        option2 = LPS(string, startIndex + 1, endIndex)
+        return max(option1, option2)
+
+string = "AMEEWMEA"
+lps = LPS(string , 0, 7)
+print(f"The Palindromic Subsequence (LPS) is: {lps}")
+
+#*##############################################################################################################################################################################################################################################################################################################################
+#*##############################################################################
+
+#! Minimum cost to reach the last cell
+#   2D matrix is given
+#   Each cell has a cost associrated with it for accessing
+#   We need to start from (0,0) and go till (n-1, n-1) cell
+#   We can go only to right or down cell from current cell
+#   Find the way in which the cost is minimum
+
+#   Example:
+#    _____________________________   
+#   |  4  |  7  |  8  |  6  |  4  |
+#   |  6  |  7  |  3  |  9  |  2  |
+#   |  3  |  8  |  1  |  2  |  4  |
+#   |  7  |  1  |  7  |  3  |  7  |
+#   |  2  |  9  |  8  |  9  |  3  |
+#    -----------------------------
+# 
+#    Min cost = 36
+
+#   Subproblem:
+#       option1 = y + 9 + 3  f(4,3)
+#       option2 = z + 7 + 3  f(3,4)
+#       min(option1, option2)
+
+def findMinCost(twoDarray, row, col):
+    if row == -1 or col == -1:
+        return float('inf')
+    elif row == 0 and col == 0:
+        return twoDarray[row][col]
+    else:
+        option1 = findMinCost(twoDarray, row-1, col)
+        option2 = findMinCost(twoDarray, row, col-1)
+        return twoDarray[row][col] + min(option1, option2)
+
+twoDList = [
+    [4,7,8,6,4],
+    [6,7,3,9,2],
+    [3,8,1,2,4],
+    [7,1,7,3,7],
+    [2,9,8,9,3 ]
+]
+minCost = findMinCost(twoDList, 4, 4)
+print(f"The Minimum cost from start to end is: {minCost}")
+
+#*##############################################################################################################################################################################################################################################################################################################################
+#*##############################################################################
+
+#! Number of paths to reach the last cell with given cost
+#   2D matrix is given
+#   Each cell has a cost associated with it for accessing.
+#   We need to start from (0,0) cell and go till (n-1, n-1) cell
+#   We can go only to right or down cell from current cell
+#   We are given total cost to reach the last cell
+#   Find the number of ways to reach end of matrix with given "total cost"
+
+#   Example:
+#   _________________________  
+#   |  4  |  7  |  1  |  6  |
+#   |  5  |  7  |  3  |  9  |
+#   |  3  |  2  |  1  |  2  |
+#   |  7  |  1  |  6  |  3  |
+#   -------------------------
+#   Need to go from 4 to 3, total cost: 25
+
+#  Subproblem:
+#       Option1: y + 2 = 22    f(3,4,22)
+#       Option2: z + 6 = 22    f(4,3,22)
+#       sum(option1, option2)
+
+def numOfPaths(twoDarray, row, col, cost):
+    if cost < 0:
+        return 0
+    elif row == 0 and col == 0:
+        if twoDarray[0][0] - cost == 0:
+            return 1
+        else:
+            return 0
+    elif row == 0:
+        return numOfPaths(twoDarray, 0, col - 1, cost - twoDarray[row][col])
+    elif col == 0:
+        return numOfPaths(twoDarray, row - 1, 0, cost - twoDarray[row][col])
+    else:
+        option1 = numOfPaths(twoDarray, row - 1, col, cost - twoDarray[row][col])
+        option2 = numOfPaths(twoDarray, row, col - 1, cost - twoDarray[row][col])
+        return option1 + option2
+    
+twoDArray = [
+    [4,7,1,6],
+    [5,7,3,9],
+    [3,2,1,2],
+    [7,1,6,3],
+    ]
+path = numOfPaths(twoDArray, 3, 3, 25)
+print(f"The number of path from start to end is: {path}")
